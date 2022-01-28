@@ -1,0 +1,61 @@
+{
+	"devices":[
+		{
+			"device":"RUTX11",
+			"connection":"ssh",
+            "host":"192.168.1.1",
+            "port":"22",
+			"login":"root",
+			"password":"Admin123",
+			"commands":[
+				{
+					"command":"AT",
+                    "arg":"",
+					"ExpectedResults":"OK"
+				},
+                {
+					"command":"AT+GMI",
+                    "arg":"",
+					"ExpectedResults":"OK"
+				},
+                
+				{
+					"command":"ATI",
+                    "arg":"",
+					"ExpectedResults":"ERROR"
+                
+				}
+                
+           
+			]
+		},
+		{
+			"device":"TRM240",
+			"connection":"serial",
+			"serialPort":"/dev/ttyUSB3",
+            "baudRate":"9600",
+			"commands":[
+				{
+					
+					"command":"AT",
+                    "arg":"",
+					"ExpectedResults":"OK"
+				},
+				{
+					
+					"command":"ATI",
+                    "arg": "+3705457", 
+					"ExpectedResults":"ERROR"
+				},
+				{
+					
+					"command":"AT+GMM",
+                    "arg": "", 
+					"ExpectedResults":"ERROR"
+				}
+
+                
+			]
+		}
+	]
+}
