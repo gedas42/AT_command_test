@@ -68,18 +68,18 @@ All information is stored inside "devices": json object array.
 			"commands":[
 				{
 					"command":"AT",
-                    "arg":"",
+                    			"arg":"",
 					"ExpectedResults":"OK"
 				},
                 {
 					"command":"AT+GMI",
-                    "arg":"",
+                    			"arg":"",
 					"ExpectedResults":"OK"
 				},
                 
 				{
 					"command":"ATI",
-                    "arg":"",
+                    			"arg":"",
 					"ExpectedResults":"ERROR"
 				}
 			]
@@ -93,17 +93,17 @@ All information is stored inside "devices": json object array.
 				{
 					
 					"command":"AT",
-                    "arg":"",
+                    			"arg":"",
 					"ExpectedResults":"OK"
 				},
 				{
 					"command":"ATI",
-                    "arg": "+3705457", 
+                    			"arg": "+3705457", 
 					"ExpectedResults":"ERROR"
 				},
 				{
 					"command":"AT+GMM",
-                    "arg": "", 
+                    			"arg": "", 
 					"ExpectedResults":"ERROR"
 				}
 			]
