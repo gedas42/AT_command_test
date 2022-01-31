@@ -1,6 +1,7 @@
 import configuration
 import modules.command_line_parser as parsers
-
+import modules.mailSender as email
+import time
 
 def ArgumentParser():
     parse = parsers.parser()
@@ -9,8 +10,9 @@ def ArgumentParser():
 def ConfigLoad():
     parser=ArgumentParser()
     config=configuration.config(parser.getParsedArgs())
+    mailConfig=config.getMailConfig()
     deviceConfig=config.getDeviceConfig()  
-    return deviceConfig
+    return deviceConfig,mailConfig
 
 def dynamin_module_upload(deviceConfig):
     try:
@@ -20,23 +22,27 @@ def dynamin_module_upload(deviceConfig):
         print(ex)
 
 def main():
-    deviceConfig=ConfigLoad()
+    deviceConfig,mailConfig=ConfigLoad()
     module=dynamin_module_upload(deviceConfig)
 
     if deviceConfig['connection']=='serial':
         try:
             connection=module.loginSerial(deviceConfig['serialPort'],deviceConfig['baudRate'],deviceConfig)
+            email.mail(mailConfig,"Device {} test was successful".format(deviceConfig['device']))
         except Exception as e:
             print(e)
             print("Could not connect to device")
+            email.mail(mailConfig,"Device {} test failed".format(deviceConfig['device']))
         # connection.sendMessage()
     elif deviceConfig['connection']=='ssh':
         
         try:
             connection=module.loginSSH(deviceConfig)
+            email.mail(mailConfig,"Device {} test was successful".format(deviceConfig['device']))
         except Exception as e:
             print(e)
-            print("Could not connect to device")        
+            print("Could not connect to device") 
+            email.mail(mailConfig,"Device {} test failed".format(deviceConfig['device']))       
     
  
 if __name__ == "__main__":

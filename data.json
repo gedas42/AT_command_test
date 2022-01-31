@@ -1,4 +1,12 @@
 {
+    "mail":{
+        "login":"gon161gon@gmail.com",
+        "password":"admin123.",
+        "port":"587",
+        "smtp":"smtp.gmail.com",
+        "recipient":"gedas.kambaras@gmail.com"
+        },
+    
 	"devices":[
 		{
 			"device":"RUTX11",
@@ -23,10 +31,7 @@
 					"command":"ATI",
                     "arg":"",
 					"ExpectedResults":"ERROR"
-                
 				}
-                
-           
 			]
 		},
 		{
@@ -42,19 +47,15 @@
 					"ExpectedResults":"OK"
 				},
 				{
-					
 					"command":"ATI",
                     "arg": "+3705457", 
 					"ExpectedResults":"ERROR"
 				},
 				{
-					
 					"command":"AT+GMM",
                     "arg": "", 
 					"ExpectedResults":"ERROR"
 				}
-
-                
 			]
 		}
 	]

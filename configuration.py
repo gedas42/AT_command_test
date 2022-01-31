@@ -8,6 +8,7 @@ class config:
     def __init__(self, device, config="data.json"):
         self.device = device
         self.filename=config
+        self.loadConfig()
 
     def loadConfig(self):
         config = open(self.filename)
@@ -15,9 +16,11 @@ class config:
         time.sleep(1)
         self.__closeConfig__(config)
 
+    def getMailConfig(self):
+        return self.__config['mail']
+
 
     def getDeviceConfig(self):
-        self.loadConfig()
         for dev in self.__config["devices"]:
             if dev["device"] == self.device:
                 device=dev
