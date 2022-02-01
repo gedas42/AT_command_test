@@ -142,11 +142,11 @@ Script is started using main.py module with device name and connection parameter
 
 Before name you need to write -d or --device to send device name as flag.
 
-Then depending device connection type you are going to send:
+Then depending device connection type you are going to send :
 
-For serial: -b <baudRate> -s <serialPort> (The order does not matter )
+For serial: -b baudRate -s serialPort (The order does not matter )
 
-For ssh: -i <deviceIP> -l <connectionUsername> -p <password> -po <port> (The order does not matter )
+For ssh: -i deviceIP -l connectionUsername -p password -po port (The order does not matter )
 
 
 #### Example
