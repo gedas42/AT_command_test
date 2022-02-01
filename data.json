@@ -6,6 +6,12 @@
         "smtp":"smtp.gmail.com",
         "recipient":"gedas.kambaras@gmail.com"
         },
+
+    "ftp":{
+        "server":"iotacademy16",
+        "username":"testuser",
+        "password":"admin123"
+    },
     
 	"devices":[
 		{

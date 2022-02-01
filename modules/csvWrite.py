@@ -33,6 +33,9 @@ class csvObj:
             list.append([line["command"],line["arg"],line["ExpectedResults"],result,test])
 
         self.writer.writerows(list)
+        self.closeCsv()
+        return self.file1.name
+
 
     def closeCsv(self):
         self.file1.close()

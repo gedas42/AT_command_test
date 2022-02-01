@@ -16,7 +16,6 @@ class loginSSH:
         self.ssh.connect(host, port, username, password)
         self.__shell = self.ssh.invoke_shell()
         time.sleep(1)
-        self.executeTest()
     def stopGSMD(self):
         try:
             self.__shell.send("/etc/init.d/gsmd stop\r")
@@ -38,6 +37,7 @@ class loginSSH:
         self.execCommand()
         self.startGSMD()
         self.ssh.close()
+        return self.filename
 
         
 
@@ -70,7 +70,7 @@ class loginSSH:
             terminalPrint.printTestsTerminal(i['command'],out,i['ExpectedResults'])
             terminalPrint.printTestStatistics(len(self.data['commands']))
         print('')
-        self.csvFile.appendCsv(out[len(out)-2])       
+        self.filename=self.csvFile.appendCsv(out[len(out)-2])       
 
 
 

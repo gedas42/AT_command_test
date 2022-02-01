@@ -16,7 +16,6 @@ class loginSerial:
     def connect(self,port,baud):
         self.stopModemManager()
         self.ser = serial.Serial(port, baud, timeout=0.5)
-        self.sendCommands()
 
     def stopModemManager(self):
         os.system("sudo systemctl stop ModemManager")
@@ -44,9 +43,9 @@ class loginSerial:
             lines=self.ReadCommandResponse()
             terminalPrint.printTestsTerminal(i['command'],lines,i['ExpectedResults'])
             terminalPrint.printTestStatistics(len(self.data['commands']))
-        self.csvFile.appendCsv(lines)
+        self.fileName=self.csvFile.appendCsv(lines)
         self.disconnect()
-
+        return self.fileName
 
     def executeCommands(self,command:str):
         self.ser.write(bytes(command+'\r', encoding='ascii'))  

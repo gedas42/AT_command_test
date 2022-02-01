@@ -19,6 +19,9 @@ class config:
     def getMailConfig(self):
         return self.__config['mail']
 
+    def getFtpConfig(self):
+        return self.__config['ftp']
+
 
     def getDeviceConfig(self):
         for dev in self.__config["devices"]:

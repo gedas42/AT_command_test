@@ -1,6 +1,7 @@
 import configuration
 import modules.command_line_parser as parsers
 import modules.mailSender as email
+import modules.ftpServer as ftp
 import time
 
 def ArgumentParser():
@@ -11,8 +12,9 @@ def ConfigLoad():
     parser=ArgumentParser()
     config=configuration.config(parser.getParsedArgs())
     mailConfig=config.getMailConfig()
+    ftpConfig=config.getFtpConfig()
     deviceConfig=config.getDeviceConfig()  
-    return deviceConfig,mailConfig
+    return deviceConfig,mailConfig,ftpConfig
 
 def dynamin_module_upload(deviceConfig):
     try:
@@ -22,12 +24,14 @@ def dynamin_module_upload(deviceConfig):
         print(ex)
 
 def main():
-    deviceConfig,mailConfig=ConfigLoad()
+    deviceConfig,mailConfig,ftpConfig=ConfigLoad()
     module=dynamin_module_upload(deviceConfig)
 
     if deviceConfig['connection']=='serial':
         try:
             connection=module.loginSerial(deviceConfig['serialPort'],deviceConfig['baudRate'],deviceConfig)
+            filename=connection.sendCommands()
+            ftp.ftpserver(filename,ftpConfig)
             email.mail(mailConfig,"Device {} test was successful".format(deviceConfig['device']))
         except Exception as e:
             print(e)
@@ -38,6 +42,8 @@ def main():
         
         try:
             connection=module.loginSSH(deviceConfig)
+            filename=connection.executeTest()
+            ftp.ftpserver(filename,ftpConfig)
             email.mail(mailConfig,"Device {} test was successful".format(deviceConfig['device']))
         except Exception as e:
             print(e)

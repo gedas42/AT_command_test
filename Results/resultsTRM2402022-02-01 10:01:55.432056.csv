@@ -1,0 +1,8 @@
+TRM240
+Quectel
+EC21
+Revision: EC21ECGAR06A04M1G
+Command,args,ExpectedResults,Results,TestResults
+AT,,OK,OK,Passed
+ATI,+3705457,ERROR,OK,Failed
+AT+GMM,,ERROR,OK,Failed
