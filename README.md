@@ -97,8 +97,8 @@ All information is stored inside "devices": json object array.
 		{
 			"device":"RUTX11",
 			"connection":"ssh",
-            "host":"192.168.1.1",
-            "port":"22",
+            		"host":"192.168.1.1",
+            		"port":"22",
 			"login":"root",
 			"password":"Admin123",
 			"commands":[
@@ -124,7 +124,7 @@ All information is stored inside "devices": json object array.
 			"device":"TRM240",
 			"connection":"serial",
 			"serialPort":"/dev/ttyUSB3",
-            "baudRate":"9600",
+            		"baudRate":"9600",
 			"commands":[
 				{
 					
