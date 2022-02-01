@@ -54,7 +54,6 @@ class loginSerial:
         lines=self.ser.readlines()
         return lines   
  
-      
     def disconnect(self):
         self.ser.close()
         

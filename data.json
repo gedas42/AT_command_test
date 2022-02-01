@@ -17,10 +17,6 @@
 		{
 			"device":"RUTX11",
 			"connection":"ssh",
-            "host":"192.168.1.1",
-            "port":"22",
-			"login":"root",
-			"password":"Admin123",
 			"commands":[
 				{
 					"command":"AT",
@@ -43,8 +39,6 @@
 		{
 			"device":"TRM240",
 			"connection":"serial",
-			"serialPort":"/dev/ttyUSB3",
-            "baudRate":"9600",
 			"commands":[
 				{
 					
@@ -54,7 +48,7 @@
 				},
 				{
 					"command":"ATI",
-                    "arg": "+3705457", 
+                    "arg": "", 
 					"ExpectedResults":"ERROR"
 				},
 				{

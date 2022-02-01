@@ -6,7 +6,6 @@ class mail:
         self.config =config
         self.sendMail(message)
         
-
     def sendMail(self,text):
         mail_content = text
         sender_address = self.config['login']

@@ -29,7 +29,6 @@ class config:
                 device=dev
         return device
 
-
     def __closeConfig__(self,config):
         if self.__config:
             config.close()

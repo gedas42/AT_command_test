@@ -12,7 +12,6 @@ class csvObj:
         self.file1 = open("Results/results"+self.data['device']+str(datetime.now())+".csv" ,"w",encoding='utf-8')
         self.writer = csv.writer(self.file1)
  
-
     def appendCsv(self,output):
         list=[]
         self.writer.writerow(self.data['device'].splitlines())
@@ -25,17 +24,14 @@ class csvObj:
                 result=output[len(output)-1].decode('utf-8').strip()
             elif self.data['connection']=='ssh':
                 result=output
-            
             if result==line["ExpectedResults"]:
                 test='Passed'
             else:
                 test= 'Failed'
             list.append([line["command"],line["arg"],line["ExpectedResults"],result,test])
-
         self.writer.writerows(list)
         self.closeCsv()
         return self.file1.name
-
 
     def closeCsv(self):
         self.file1.close()

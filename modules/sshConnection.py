@@ -6,9 +6,9 @@ import modules.terminalWrite as terminal
 
 class loginSSH:
 
-    def __init__(self,data):
+    def __init__(self,data,ip,port,username,password):
         self.data=data
-        self.createCon(self.data['host'],self.data['port'],self.data['login'],self.data['password'])
+        self.createCon(ip,port,username,password)
 
     def createCon(self, host, port, username, password):
         self.ssh = paramiko.SSHClient()
