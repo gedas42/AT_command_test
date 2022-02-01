@@ -119,12 +119,12 @@ All information is stored inside "devices": json object array.
 				},
 				{
 					"command":"ATI",
-                    "arg": "", 
+                    "arg":"", 
 					"ExpectedResults":"ERROR"
 				},
 				{
 					"command":"AT+GMM",
-                    "arg": "", 
+                    "arg":"", 
 					"ExpectedResults":"ERROR"
 				}
 			]
