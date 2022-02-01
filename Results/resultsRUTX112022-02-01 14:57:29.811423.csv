@@ -1,0 +1,8 @@
+RUTX11
+Quectel
+EG06
+Revision: EG06ELAR03A05M4G
+Command,args,ExpectedResults,Results,TestResults
+AT,,OK,OK,Passed
+AT+GMI,,OK,OK,Passed
+ATI,,ERROR,OK,Failed

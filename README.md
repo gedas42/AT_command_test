@@ -47,14 +47,6 @@ All information is stored inside "devices": json object array.
 
 "connection": Connection type that this device is using.
 
-"host": Device IP address
-
-"port": Connection port for SSH connection
-
-"login": Username for SSH connection authentification
-
-"password":Password for SSH connection authentification.
-
 "commands":[] All AT commands for the specified device are stored inside commands array.
 
 #### For serial connection device.
@@ -63,9 +55,7 @@ All information is stored inside "devices": json object array.
 
 "connection":Connection type
 
-"serialPort": Connection port
-
-"baudRate": Baud rate
+"commands":[] All AT commands for the specified device are stored inside commands array.
 
 ### Command structure
 
@@ -78,6 +68,7 @@ All information is stored inside "devices": json object array.
 ## Json example
 
 ```json
+
 {
     "mail":{
         "login":"gon161gon@gmail.com",
@@ -97,25 +88,21 @@ All information is stored inside "devices": json object array.
 		{
 			"device":"RUTX11",
 			"connection":"ssh",
-            		"host":"192.168.1.1",
-            		"port":"22",
-			"login":"root",
-			"password":"Admin123",
 			"commands":[
 				{
 					"command":"AT",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
                 {
 					"command":"AT+GMI",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
                 
 				{
 					"command":"ATI",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"ERROR"
 				}
 			]
@@ -123,23 +110,21 @@ All information is stored inside "devices": json object array.
 		{
 			"device":"TRM240",
 			"connection":"serial",
-			"serialPort":"/dev/ttyUSB3",
-            		"baudRate":"9600",
 			"commands":[
 				{
 					
 					"command":"AT",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
 				{
 					"command":"ATI",
-                    			"arg": "+3705457", 
+                    "arg": "", 
 					"ExpectedResults":"ERROR"
 				},
 				{
 					"command":"AT+GMM",
-                    			"arg": "", 
+                    "arg": "", 
 					"ExpectedResults":"ERROR"
 				}
 			]
@@ -148,18 +133,28 @@ All information is stored inside "devices": json object array.
 }
 
 
+
 ```
 
 ## Usage
 
-Script is started using main.py module with device name as parameter. Before name you need to write -p or --product to send device name as flag.
+Script is started using main.py module with device name and connection parameters as flags. 
+
+Before name you need to write -d or --device to send device name as flag.
+
+Then depending device connection type you are going to send:
+
+For serial: -b <baudRate> -s <serialPort> (The order does not matter )
+
+For ssh: -i <deviceIP> -l <connectionUsername> -p <password> -po <port> (The order does not matter )
+
 
 #### Example
 
 For ssh connection device:
 
-python3.6 main.py -p RUTX11 or python main.py --product RUTX11
+python3.6 main.py -d RUTX11 -i 192.168.1.1 -l root -p Admin123 -po 22
 
 For serial connection device:
 
-sudo python3.6 main.py -p TRM240 or sudo python3.6 main.py --product TRM240
+sudo python3.6 main.py -d TRM240 -b 9600 -s /dev/ttyUSB3
