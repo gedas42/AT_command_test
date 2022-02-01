@@ -19,23 +19,45 @@ pip3 install pyserial
 Configuration file is used to define devices with their connection type and the commands that will be tested on those devices. It must be named "data.json".
 
 All information is stored inside "devices": json object array.
+### For FTP configuration
 
+ "server": server address
+
+ "username":Login username for ftp server
+
+ "password":Login password for ftp server
+
+### For Mail configuration
+
+ "login":email login name
+
+ "password":email password
+
+ "port": smtp port for selected email service
+
+ "smtp": server for selected email smtp
+
+ "recipient": recipient email address
 
 ### Device structure
 
 #### For SSH connection device:
 
 "device": Device name for which the configuration is being created.
+
 "connection": Connection type that this device is using.
+
 "host": Device IP address
+
 "port": Connection port for SSH connection
+
 "login": Username for SSH connection authentification
+
 "password":Password for SSH connection authentification.
+
 "commands":[] All AT commands for the specified device are stored inside commands array.
 
 #### For serial connection device.
-
-#### Command structure
 
 "device":Device name for which the configuration is being created.
 
@@ -57,6 +79,20 @@ All information is stored inside "devices": json object array.
 
 ```json
 {
+    "mail":{
+        "login":"gon161gon@gmail.com",
+        "password":"admin123.",
+        "port":"587",
+        "smtp":"smtp.gmail.com",
+        "recipient":"gedas.kambaras@gmail.com"
+        },
+
+    "ftp":{
+        "server":"iotacademy16",
+        "username":"testuser",
+        "password":"admin123"
+    },
+    
 	"devices":[
 		{
 			"device":"RUTX11",
@@ -68,18 +104,18 @@ All information is stored inside "devices": json object array.
 			"commands":[
 				{
 					"command":"AT",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
                 {
 					"command":"AT+GMI",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
                 
 				{
 					"command":"ATI",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"ERROR"
 				}
 			]
@@ -93,23 +129,24 @@ All information is stored inside "devices": json object array.
 				{
 					
 					"command":"AT",
-                    			"arg":"",
+                    "arg":"",
 					"ExpectedResults":"OK"
 				},
 				{
 					"command":"ATI",
-                    			"arg": "+3705457", 
+                    "arg": "+3705457", 
 					"ExpectedResults":"ERROR"
 				},
 				{
 					"command":"AT+GMM",
-                    			"arg": "", 
+                    "arg": "", 
 					"ExpectedResults":"ERROR"
 				}
 			]
 		}
 	]
 }
+
 
 ```
 
